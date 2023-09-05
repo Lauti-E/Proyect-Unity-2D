@@ -2006,7 +2006,7 @@ GameObject:
   - component: {fileID: 2018406053}
   - component: {fileID: 2018406052}
   - component: {fileID: 2018406051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Piso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
