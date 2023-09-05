@@ -14,11 +14,21 @@ public class Mover : MonoBehaviour
 
     // Variable para referenciar otro componente del objeto
     private Rigidbody2D miRigidbody2D;
+    private Animator miAnimator;
+    private SpriteRenderer miSprite;
+    private CircleCollider2D miCollider2D;
+
+    private int saltarMask;
 
     // Codigo ejecutado cuando el objeto se activa en el nivel
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
+        miAnimator = GetComponent<Animator>();
+        miSprite = GetComponent<SpriteRenderer>();
+        miCollider2D = GetComponent<CircleCollider2D>();
+
+        saltarMask = LayerMask.GetMask("Pisos", "Plataformas");
     }
 
     // Codigo ejecutado en cada frame del juego (Intervalo variable)
@@ -26,9 +36,30 @@ public class Mover : MonoBehaviour
     {
         moverHorizontal = Input.GetAxis("Horizontal");
         direccion = new Vector2(moverHorizontal, 0f);
+
+        int velX = (int)miRigidbody2D.velocity.x;
+
+        /* Lo hice de esta manera ya que haciéndolo como en el video del aula el flipX se hace invertido. */
+        if(moverHorizontal > 0)
+        {
+            miSprite.flipX = false; //No se invierte.
+        }
+        else if(moverHorizontal < 0)
+        {
+            miSprite.flipX = true; //Se invierte.
+        }
+
+        miAnimator.SetInteger("Velocidad", velX);
+
+        miAnimator.SetBool("EnAire", !EnContactoConPlataforma());
     }
     private void FixedUpdate()
     {
         miRigidbody2D.AddForce(direccion * velocidad);
+    }
+
+    private bool EnContactoConPlataforma()
+    {
+        return miCollider2D.IsTouchingLayers(saltarMask);
     }
 }
