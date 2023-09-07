@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    // Variables a configurar desde el editor
+    //Variables a configurar desde el editor
     [Header("Configuracion")]
     [SerializeField] float velocidad = 5f;
 
-    // Variables de uso interno en el script
+    //Variables de uso interno en el script
     private float moverHorizontal;
     private Vector2 direccion;
 
-    // Variable para referenciar otro componente del objeto
+    //Variable para referenciar otro componente del objeto
     private Rigidbody2D miRigidbody2D;
     private Animator miAnimator;
     private SpriteRenderer miSprite;
@@ -20,7 +20,7 @@ public class Mover : MonoBehaviour
 
     private int saltarMask;
 
-    // Codigo ejecutado cuando el objeto se activa en el nivel
+    //Codigo ejecutado cuando el objeto se activa en el nivel
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
@@ -31,7 +31,7 @@ public class Mover : MonoBehaviour
         saltarMask = LayerMask.GetMask("Pisos", "Plataformas");
     }
 
-    // Codigo ejecutado en cada frame del juego (Intervalo variable)
+    //Codigo ejecutado en cada frame del juego (Intervalo variable)
     private void Update()
     {
         moverHorizontal = Input.GetAxis("Horizontal");
@@ -50,15 +50,15 @@ public class Mover : MonoBehaviour
         }
 
         miAnimator.SetInteger("Velocidad", velX);
+        miAnimator.SetBool("EnAire", !ContactoPiso());
 
-        miAnimator.SetBool("EnAire", !EnContactoConPlataforma());
     }
     private void FixedUpdate()
     {
         miRigidbody2D.AddForce(direccion * velocidad);
     }
 
-    private bool EnContactoConPlataforma()
+    private bool ContactoPiso()
     {
         return miCollider2D.IsTouchingLayers(saltarMask);
     }
