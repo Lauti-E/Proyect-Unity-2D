@@ -33,6 +33,7 @@ public class Saltar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && puedoSaltar)
         {
             puedoSaltar = false;
+
             if(miAudioSource.isPlaying) { return; }
             miAudioSource.PlayOneShot(jumpSFX);
         }
@@ -53,7 +54,7 @@ public class Saltar : MonoBehaviour
         puedoSaltar = true;
         saltando = false;
 
-        if (miAudioSource.isPlaying) { return; }
+        if(miAudioSource.isPlaying) { return; }
         miAudioSource.PlayOneShot(collisionSFX);
     }
 
