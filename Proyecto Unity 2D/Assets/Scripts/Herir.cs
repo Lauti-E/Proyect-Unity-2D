@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class Herir : MonoBehaviour
@@ -15,7 +14,7 @@ public class Herir : MonoBehaviour
         {
             Jugador jugador = collision.gameObject.GetComponent<Jugador>();
             jugador.ModificarVida(-puntos);
-            UnityEngine.Debug.Log(" PUNTOS DE DAÑO REALIZADOS AL JUGADOR " + puntos);
+            Debug.Log(" PUNTOS DE DAÑO REALIZADOS AL JUGADOR " + puntos);
         }
     }
 }
