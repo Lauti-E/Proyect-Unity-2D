@@ -16,7 +16,7 @@ public class GeneradorObjetoAleatorio : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating(nameof(GeneradorObjetoAleatorio), tiempoEspera, tiempoIntervalo);
+        //InvokeRepeating(nameof(GeneradorObjetoAleatorio), tiempoEspera, tiempoIntervalo);
     }
 
     void GenerarObjetoAleatorio()
@@ -24,5 +24,17 @@ public class GeneradorObjetoAleatorio : MonoBehaviour
         int indexAleatorio = Random.Range(0, objetosPrefabs.Length);
         GameObject prefabAleatorio = objetosPrefabs[indexAleatorio];
         Instantiate(prefabAleatorio, transform.position, Quaternion.identity);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("El SpriteRenderer deja de ser visible por las cámaras en la escena.");
+        CancelInvoke(nameof(GenerarObjetoAleatorio));
+    }
+
+    private void OnBecameVisible()
+    {
+        Debug.Log("El SpriteRenderer es visible por las cámaras en la escena.");
+        InvokeRepeating(nameof(GenerarObjetoAleatorio), tiempoEspera, tiempoIntervalo);
     }
 }
