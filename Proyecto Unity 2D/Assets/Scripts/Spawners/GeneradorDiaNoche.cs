@@ -6,25 +6,26 @@ public class GeneradorDiaNoche : MonoBehaviour
 {
     [SerializeField] private Camera camara;
     [SerializeField] private Color nocheColor;
-    [SerializeField] private float segundos;
+
+    [SerializeField][Range(4, 128)] private int duracionDia;
+    [SerializeField][Range(4, 24)] private int dias;
 
     private Color diaColor;
 
     void Start()
     {
         diaColor = camara.backgroundColor;
-        InvokeRepeating("CambiarColor", segundos, segundos);
+        StartCoroutine(CambiarColor(duracionDia));
     }
 
-    void CambiarColor()
+    IEnumerator CambiarColor(float tiempo)
     {
-        if(camara.backgroundColor == diaColor)
+        for(int i = 0; i < duracionDia; i++)
         {
-            camara.backgroundColor = nocheColor;
-        }
-        else
-        {
-            camara.backgroundColor = diaColor;
+            yield return new WaitForSeconds(tiempo);
+            camara.backgroundColor = camara.backgroundColor == diaColor ?
+                                     camara.backgroundColor = nocheColor :
+                                     camara.backgroundColor = diaColor;
         }
     }
 }
