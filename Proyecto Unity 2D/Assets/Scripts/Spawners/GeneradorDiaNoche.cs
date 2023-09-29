@@ -20,12 +20,28 @@ public class GeneradorDiaNoche : MonoBehaviour
 
     IEnumerator CambiarColor(float tiempo)
     {
-        for(int i = 0; i < duracionDia; i++)
+        Color colorDestino = camara.backgroundColor == diaColor ? nocheColor : diaColor;
+        float duracionCiclo = tiempo * 0.6f;
+        float duracionCambio = tiempo * 0.4f;
+
+        for(int i = 0; i < dias; i++)
         {
             yield return new WaitForSeconds(tiempo);
-            camara.backgroundColor = camara.backgroundColor == diaColor ?
-                                     camara.backgroundColor = nocheColor :
-                                     camara.backgroundColor = diaColor;
+
+            float tiempoTransc = 0;
+
+            while (tiempoTransc < duracionCambio)
+            {
+                tiempoTransc += Time.deltaTime;
+                float t = tiempoTransc / duracionCambio;
+
+                float smoothT = Mathf.SmoothStep(0f, 1f, t);
+                camara.backgroundColor = Color.Lerp(camara.backgroundColor, colorDestino, smoothT);
+                yield return null;
+            }
+
+            colorDestino = camara.backgroundColor == diaColor ? nocheColor : diaColor;
+
         }
     }
 }
