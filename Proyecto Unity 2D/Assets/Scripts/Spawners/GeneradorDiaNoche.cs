@@ -22,7 +22,7 @@ public class GeneradorDiaNoche : MonoBehaviour
     {
         Color colorDestino = camara.backgroundColor == diaColor ? nocheColor : diaColor;
         float duracionCiclo = tiempo * 0.6f;
-        float duracionCambio = tiempo * 0.4f;
+        float duracionCambio = tiempo * 0.8f;
 
         for(int i = 0; i < dias; i++)
         {
