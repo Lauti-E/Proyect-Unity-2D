@@ -6,7 +6,7 @@ public class Herir : MonoBehaviour
 {
     // Variables a configurar desde el editor
     [Header("Configuracion")]
-    [SerializeField] float puntos = 5f;
+    [SerializeField] int puntos = 1;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
