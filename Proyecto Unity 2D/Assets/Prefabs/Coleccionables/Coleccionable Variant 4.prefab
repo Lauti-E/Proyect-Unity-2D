@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3142058568951719472
+--- !u!1001 &5119129015849799830
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -48,29 +48,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5482297205449007904, guid: bae8c21929196be40982cfabc5115663, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482297205449007904, guid: bae8c21929196be40982cfabc5115663, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 5482297205449007904, guid: bae8c21929196be40982cfabc5115663, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
-      objectReference: {fileID: 0}
     - target: {fileID: 6046628793076579776, guid: bae8c21929196be40982cfabc5115663, type: 3}
       propertyPath: m_Name
       value: Coleccionable Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283363555079523975, guid: bae8c21929196be40982cfabc5115663, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6283363555079523975, guid: bae8c21929196be40982cfabc5115663, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
