@@ -7,8 +7,12 @@ public class Jugador : MonoBehaviour
     [Header("Configuracion")]
     [SerializeField] private int vidasIniciales = 5;
     private int vidasActuales; //Seguimiento de las vidas actuales.
+    private int coleccionablesRec = 0; //Contador de coleccionables recolectados.
+
     private Vector3 posicionInicial; //Almacenará la posición inicial del jugador.
+
     private bool enTrampa = false; //Variable de estado para verificar si el jugador colisionó con un pincho.
+    private bool haGanado = false; //Variable de estado para verificar si el jugador ganó.
 
     private void Start()
     {
@@ -57,9 +61,17 @@ public class Jugador : MonoBehaviour
 
             Debug.Log("Has sido atrapado por la trampa. Vuelve a la posición inicial.");
         }
+        else if (collision.gameObject.CompareTag("Coleccionable"))
+        {
+            coleccionablesRec++; //Incrementar el contador de coleccionables (frutas).
+        }
         else if (collision.gameObject.CompareTag("Meta"))
         {
-            Debug.Log("GANASTE!");
+            if(coleccionablesRec >= 5 && !haGanado)
+            {
+                haGanado = true;
+                Debug.Log("GANASTE!");
+            }
         }
     }
 }
