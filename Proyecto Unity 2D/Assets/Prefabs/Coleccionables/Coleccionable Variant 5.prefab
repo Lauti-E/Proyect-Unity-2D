@@ -50,7 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6046628793076579776, guid: bae8c21929196be40982cfabc5115663, type: 3}
       propertyPath: m_Name
-      value: Coleccionable Variant
+      value: Coleccionable Variant 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283363555079523975, guid: bae8c21929196be40982cfabc5115663, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283363555079523975, guid: bae8c21929196be40982cfabc5115663, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
