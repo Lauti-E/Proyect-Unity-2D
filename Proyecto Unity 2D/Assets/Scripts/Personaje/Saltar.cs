@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Saltar : MonoBehaviour
 {
-    [SerializeField] private PerfilJugador perfilJugador;
+    private Jugador jugador;
 
     //Variables de uso interno en el script
     private bool puedoSaltar = true;
@@ -15,6 +15,12 @@ public class Saltar : MonoBehaviour
     private AudioSource miAudioSource;
 
     //Codigo ejecutado cuando el objeto se activa en el nivel
+
+    private void Awake()
+    {
+        jugador = GetComponent<Jugador>();
+    }
+
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
@@ -29,7 +35,7 @@ public class Saltar : MonoBehaviour
             puedoSaltar = false;
 
             if(miAudioSource.isPlaying) { return; }
-            miAudioSource.PlayOneShot(perfilJugador.JumpSFX);
+            miAudioSource.PlayOneShot(jugador.PerfilJugador.JumpSFX);
         }
     }
 
@@ -37,7 +43,7 @@ public class Saltar : MonoBehaviour
     {
         if (!puedoSaltar && !saltando)
         {
-            miRigidbody2D.AddForce(Vector2.up * perfilJugador.FuerzaSalto, ForceMode2D.Impulse);
+            miRigidbody2D.AddForce(Vector2.up * jugador.PerfilJugador.FuerzaSalto, ForceMode2D.Impulse);
             saltando = true;
         }
     }
@@ -49,7 +55,7 @@ public class Saltar : MonoBehaviour
         saltando = false;
 
         if(miAudioSource.isPlaying) { return; }
-        miAudioSource.PlayOneShot(perfilJugador.CollisionSFX);
+        miAudioSource.PlayOneShot(jugador.PerfilJugador.CollisionSFX);
     }
 
 }

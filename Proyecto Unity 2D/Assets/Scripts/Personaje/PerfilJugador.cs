@@ -6,40 +6,30 @@ using UnityEngine;
 
 public class PerfilJugador : ScriptableObject
 {
-    [Header("Configuracion de vida del Jugador.")]
+    [Header("Configuraciones de atributos del Jugador.")]
+   
     [SerializeField]
+    private int vidasIniciales = 5; //Vidas iniciales.
 
-    //Vidas iniciales.
-    private int vidasIniciales = 5;
-    public int VidasIniciales { get => vidasIniciales; set => vidasIniciales = value; }
+    public int VidasIniciales {  get => vidasIniciales; set => vidasIniciales = value; }
 
-    //Seguimiento de las vidas actuales.
-    private int vidasActuales;
-    public int VidasActuales { get => vidasActuales; set => vidasActuales = value; }
+    [Header("Configuraciones de movimiento del Jugador.")]
 
-    //Contador de coleccionables recolectados.
-    private int coleccionablesRec = 0;
-    public int ColeccionablesRec { get => coleccionablesRec; set  => coleccionablesRec = value;}
-
-    [Header("Configuracion de velocidad del Jugador.")]
-    [SerializeField] 
-    
-    //Velocidad inicial.
-    private float velocidad = 5f;
+    [SerializeField]
+    float velocidad = 5f; //Velocidad inicial.
 
     public float Velocidad { get => velocidad; set => velocidad = value; }
 
-    [Header("Configuracion de la fuerza del salto del Jugador.")]
-    [SerializeField] 
-    private float fuerzaSalto = 5f;
+    [SerializeField]
+    private float fuerzaSalto = 5f; //Fuerza del salto.
 
-    public float FuerzaSalto { get => fuerzaSalto; set => fuerzaSalto = value; }
+    public float FuerzaSalto {  get => fuerzaSalto; set => fuerzaSalto = value;}
 
-    [Header("Sonidos del Jugador.")]
+    [Header("Configuraciones SFX del Jugador.")] //Sonidos del jugador.
     [SerializeField] private AudioClip jumpSFX;
     [SerializeField] private AudioClip collisionSFX;
 
-    public AudioClip JumpSFX { get => jumpSFX; }
+    public AudioClip JumpSFX {  get => jumpSFX; }
 
     public AudioClip CollisionSFX { get => collisionSFX; }
 }

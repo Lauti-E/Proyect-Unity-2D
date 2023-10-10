@@ -7274,7 +7274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24963ecc3ff08f46b5469e1b88f55d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perfilJugador: {fileID: 0}
+  moverHorizontal: 0
 --- !u!114 &473391486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7287,7 +7287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf4c976c04fe51449041a8676063c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perfilJugador: {fileID: 0}
 --- !u!114 &473391487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7301,6 +7300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perfilJugador: {fileID: 11400000, guid: 889ee7953e897ef428399c7628daaff2, type: 2}
+  vidasActuales: 0
 --- !u!95 &473391488
 Animator:
   serializedVersion: 5
@@ -34447,7 +34447,7 @@ Transform:
   m_GameObject: {fileID: 1948617962}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.173404, y: 2.8910244, z: 0.22711158}
+  m_LocalPosition: {x: -35.616, y: 6.896, z: 0.22711158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35551,7 +35551,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.8584394
+      m_AnimationSpeed: 1.1527895
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: -2, z: 0}
@@ -35560,7 +35560,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.8291793
+      m_AnimationSpeed: 1.2894504
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -2, z: 0}
@@ -35587,7 +35587,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.120813
+      m_AnimationSpeed: 1.2796383
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 0, z: 0}
@@ -35596,7 +35596,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.1126683
+      m_AnimationSpeed: 1.5718606
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}

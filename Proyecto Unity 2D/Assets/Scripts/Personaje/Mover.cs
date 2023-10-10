@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private PerfilJugador perfilJugador;
+    private Jugador jugador;
 
+    [SerializeField]
     //Variables de uso interno en el script
     private float moverHorizontal;
     private Vector2 direccion;
@@ -19,6 +20,12 @@ public class Mover : MonoBehaviour
     private int saltarMask;
 
     //Codigo ejecutado cuando el objeto se activa en el nivel
+
+    private void Awake()
+    {
+        jugador = GetComponent<Jugador>();
+    }
+
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
@@ -53,7 +60,7 @@ public class Mover : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        miRigidbody2D.AddForce(direccion * perfilJugador.Velocidad);
+        miRigidbody2D.AddForce(direccion * jugador.PerfilJugador.Velocidad);
     }
 
     private bool ContactoPiso()

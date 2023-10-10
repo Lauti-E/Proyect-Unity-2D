@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Jugador : MonoBehaviour
 {
-    [SerializeField] private PerfilJugador perfilJugador;
+
+    [SerializeField]
+    private PerfilJugador perfilJugador;
+
+    public PerfilJugador PerfilJugador { get => perfilJugador; }
+
+    [SerializeField]
+    private int vidasActuales; //Seguimiento de las vidas actuales.
+    private int coleccionablesRec = 0; //Contador de coleccionables recolectados.
 
     private Vector3 posicionInicial; //Almacenará la posición inicial del jugador.
 
@@ -14,7 +22,7 @@ public class Jugador : MonoBehaviour
     private void Start()
     {
         //Inicializa las vidas actuales.
-         perfilJugador.VidasActuales = perfilJugador.VidasIniciales;
+         vidasActuales = perfilJugador.VidasIniciales;
 
         //Guardar la posición inicial del jugador al inicio del juego.
         posicionInicial = transform.position;
@@ -22,16 +30,16 @@ public class Jugador : MonoBehaviour
 
     public void ModificarVida(int puntos)
     {
-       perfilJugador.VidasActuales += puntos;
+      vidasActuales += puntos;
 
-        if(perfilJugador.VidasActuales <= 0)
+        if(vidasActuales <= 0)
         {
             //El jugador se quedó sin vidas, reiniciar juego.
             ReiniciarJuego();
         }
         else
         {
-            Debug.Log("Vidas restantes: " + perfilJugador.VidasActuales);
+            Debug.Log("Vidas restantes: " + vidasActuales);
         }
     }
 
@@ -39,12 +47,12 @@ public class Jugador : MonoBehaviour
     {
         Debug.Log("Te quedaste sin vidas, vuelve a intentarlo.");
         transform.position = posicionInicial;
-        perfilJugador.VidasActuales = perfilJugador.VidasIniciales;
+       vidasActuales = perfilJugador.VidasIniciales;
     }
 
     private bool EstasVivo()
     {
-        return perfilJugador.VidasActuales > 0;
+        return vidasActuales > 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,11 +68,11 @@ public class Jugador : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Coleccionable"))
         {
-            perfilJugador.ColeccionablesRec++; //Incrementar el contador de coleccionables (frutas).
+           coleccionablesRec++; //Incrementar el contador de coleccionables (frutas).
         }
         else if (collision.gameObject.CompareTag("Meta"))
         {
-            if(perfilJugador.ColeccionablesRec >= 5 && !haGanado)
+            if(coleccionablesRec >= 5 && !haGanado)
             {
                 haGanado = true;
                 Debug.Log("GANASTE!");
