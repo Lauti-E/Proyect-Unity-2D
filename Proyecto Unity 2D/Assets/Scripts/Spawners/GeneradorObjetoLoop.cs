@@ -5,29 +5,54 @@ using UnityEngine;
 public class GeneradorObjetoLoop : MonoBehaviour
 {
     [SerializeField] private GameObject objetoPrefab;
-    [SerializeField] [Range(0.5f, 5f)] private float tiempoEspera;
-    [SerializeField] [Range(0.5f, 5f)] private float tiempoIntervalo;
+    [SerializeField] [Range(7f, 10f)] private float tiempoEspera = 7f;
+    [SerializeField] [Range(7f, 10f)] private float tiempoIntervalo = 10f;
 
     private int enemigosGen = 0;
     private int limEnemigos = 3;
+    private float tiempoUltGen = 0f;
+
+    private bool esVisible = false;
+
 
     void Start()
     {
-        InvokeRepeating(nameof(GeneradorObjetoLoop), tiempoEspera, tiempoIntervalo);
+        tiempoUltGen = Time.time;
+
+        if (esVisible && enemigosGen < limEnemigos)
+        {
+            InvokeRepeating(nameof(GeneradorObjetoLoop), tiempoEspera, tiempoIntervalo);
+        }
     }
 
     void GenerarObjetoLoop()
     {
-        if (enemigosGen < limEnemigos)
+        if (esVisible && enemigosGen < limEnemigos && Time.time - tiempoUltGen >= tiempoEspera)
         {
             Instantiate(objetoPrefab, transform.position, Quaternion.identity);
 
             enemigosGen++;
-        }
-        else
-        {
-            CancelInvoke(nameof(GenerarObjetoLoop)); //Detiene la generación después de alcanzar el límite.
+            tiempoUltGen = Time.time;
+
+            if (enemigosGen >= limEnemigos)
+            {
+                CancelInvoke(nameof(GenerarObjetoLoop)); //Detiene la generación después de alcanzar el límite.
+            }
         }
     }
 
+    private void OnBecameVisible()
+    {
+        esVisible = true;
+
+        if (enemigosGen < limEnemigos)
+        {
+            InvokeRepeating(nameof(GenerarObjetoLoop), tiempoEspera, tiempoIntervalo);
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        esVisible = false;
+    }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PerfilNormal
   m_EditorClassIdentifier: 
   vidasIniciales: 5
-  velocidad: 7
-  fuerzaSalto: 7
+  velocidad: 10
+  fuerzaSalto: 12
   jumpSFX: {fileID: 8300000, guid: bc6fc2dc53bfee74aa1ed16e9617f2ce, type: 3}
   collisionSFX: {fileID: 8300000, guid: 62b6a843bc314054a8250b2d571596ce, type: 3}

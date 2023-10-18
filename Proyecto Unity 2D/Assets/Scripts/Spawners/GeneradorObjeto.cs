@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class GeneradorObjeto : MonoBehaviour
 {
-    [SerializeField] private GameObject objetoPrefab;
-    [SerializeField] [Range(0.5f, 5f)] private float tiempoEspera;
+    public GameObject enemigoPrefab;
 
-    private int enemigosGen = 0;
-    private int limEnemigos = 3;
+    private bool generado = false;
 
-    void Start()
+    private void OnBecameVisible()
     {
-        InvokeRepeating(nameof(GenerarObjeto), tiempoEspera, tiempoEspera);
+        if (!generado && Camera.main.CompareTag("MainCamera"))
+        {
+            //Iniciar el bucle de generación de enemigos cada 5 segundos.
+            InvokeRepeating("GenerarEnemigo", 0f, 5f);
+
+            GenerarEnemigo();
+        }
     }
 
-    void GenerarObjeto()
+    private void GenerarEnemigo()
     {
-        if(enemigosGen < limEnemigos)
-        {
-            Instantiate(objetoPrefab, transform.position, Quaternion.identity);
+        //Genera el enemigo en la posición del generador.
+        GameObject nuevoEnemigo = Instantiate(enemigoPrefab, transform.position, Quaternion.identity);
 
-            enemigosGen++;
-        }
-        else
-        {
-            CancelInvoke(nameof(GenerarObjeto)); //Detiene la generación después de alcanzar el límite.
-        }
+        generado = true;
     }
 }
