@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Jugador : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Jugador : MonoBehaviour
     [SerializeField]
     private UnityEvent<int> ModificacionVidas;
 
+    [SerializeField]
+    private UnityEvent<string> CambioTexto;
 
     [SerializeField]
     private int vidasActuales; //Seguimiento de las vidas actuales.
@@ -35,13 +38,14 @@ public class Jugador : MonoBehaviour
         posicionInicial = transform.position;
 
         ModificacionVidas.Invoke(perfilJugador.VidasIniciales);
+        CambioTexto.Invoke(perfilJugador.VidasIniciales.ToString());
     }
 
     public void ModificarVida(int puntos)
     {
-      vidasActuales += puntos;
+        vidasActuales += puntos;
 
-        if(vidasActuales <= 0)
+        if (vidasActuales <= 0)
         {
             //El jugador se quedó sin vidas, reiniciar juego.
             ReiniciarJuego();
@@ -56,7 +60,7 @@ public class Jugador : MonoBehaviour
     {
         Debug.Log("Te quedaste sin vidas, vuelve a intentarlo.");
         transform.position = posicionInicial;
-       vidasActuales = perfilJugador.VidasIniciales;
+        vidasActuales = perfilJugador.VidasIniciales;
     }
 
     private bool EstasVivo()
