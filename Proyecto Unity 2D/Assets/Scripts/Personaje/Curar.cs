@@ -13,7 +13,7 @@ public class Curar : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Jugador jugador = other.GetComponent<Jugador>();
-            jugador.ModificarVida(puntos);
+            jugador.ModificarVida(-puntos);
             UnityEngine.Debug.Log("PUNTOS DE VIDA DEL JUGADOR: " + puntos);
         }
     }

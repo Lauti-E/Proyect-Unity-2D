@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Jugador : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class Jugador : MonoBehaviour
     private PerfilJugador perfilJugador;
 
     public PerfilJugador PerfilJugador { get => perfilJugador; }
+
+
+    //Eventos del jugador.
+    [SerializeField]
+    private UnityEvent<int> ModificacionVidas;
+
 
     [SerializeField]
     private int vidasActuales; //Seguimiento de las vidas actuales.
@@ -26,6 +33,8 @@ public class Jugador : MonoBehaviour
 
         //Guardar la posición inicial del jugador al inicio del juego.
         posicionInicial = transform.position;
+
+        ModificacionVidas.Invoke(perfilJugador.VidasIniciales);
     }
 
     public void ModificarVida(int puntos)
