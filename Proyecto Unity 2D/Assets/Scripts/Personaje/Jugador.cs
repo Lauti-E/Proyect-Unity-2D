@@ -38,7 +38,6 @@ public class Jugador : MonoBehaviour
         posicionInicial = transform.position;
 
         ModificacionVidas.Invoke(perfilJugador.VidasIniciales);
-        CambioTexto.Invoke(perfilJugador.VidasIniciales.ToString());
     }
 
     public void ModificarVida(int puntos)
