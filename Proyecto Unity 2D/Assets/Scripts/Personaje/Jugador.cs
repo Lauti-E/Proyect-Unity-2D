@@ -7,6 +7,9 @@ public class Jugador : MonoBehaviour
     [SerializeField]
     private PerfilJugador perfilJugador;
 
+    [SerializeField]
+    private UnityEvent<string> VidasCargadas;
+
     public PerfilJugador PerfilJugador { get => perfilJugador; }
 
     [SerializeField]
@@ -25,11 +28,17 @@ public class Jugador : MonoBehaviour
 
         //Guardar la posición inicial del jugador al inicio del juego.
         posicionInicial = transform.position;
+
+        VidasCargadas.Invoke(vidasActuales.ToString());
     }
 
     public void ModificarVida(int puntos)
     {
         vidasActuales += puntos;
+
+        vidasActuales = Mathf.Max(vidasActuales, 0);
+
+        VidasCargadas.Invoke(vidasActuales.ToString());
 
         if (vidasActuales <= 0)
         {
@@ -51,6 +60,8 @@ public class Jugador : MonoBehaviour
 
         //Restablecer las vidas actuales a la cantidad inicial.
         vidasActuales = perfilJugador.VidasIniciales;
+
+        VidasCargadas.Invoke(vidasActuales.ToString());
     }
 
     private bool EstasVivo()
@@ -81,10 +92,5 @@ public class Jugador : MonoBehaviour
                 Debug.Log("GANASTE!");
             }
         }
-    }
-
-    public int VidasActuales
-    {
-        get { return vidasActuales; }
     }
 }

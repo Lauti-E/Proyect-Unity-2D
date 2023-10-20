@@ -1,21 +1,17 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class HUDController : MonoBehaviour
 {
-    [SerializeField] private Text textoVidas;
-    [SerializeField] private Jugador jugador;
+    [SerializeField]
+    TextMeshProUGUI vidas;
 
-    private void Start()
-    {
-        if (jugador == null)
-        {
-            Debug.LogError("El jugador no está asignado en el Inspector.");
-        }
-    }
+    [SerializeField]
+    private string textoVidas = "Vidas: ";
 
-    private void Update()
+    public void ActualizarVidasHUD(string nuevoTexto)
     {
-        textoVidas.text = "Vidas: " + j
+        string textoCompleto = textoVidas + nuevoTexto;
+        vidas.text = textoCompleto;
     }
 }
