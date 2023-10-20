@@ -5,65 +5,38 @@ using TMPro;
 
 public class HUDController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI miTexto;
+    [SerializeField] GameObject iconoVidaPrefab;
+    [SerializeField] Transform contIconosVida;
 
-    [SerializeField] GameObject iconoVida;
-    [SerializeField] GameObject contIconosVida;
+    //Lista de corazones.
+    private List<GameObject> corazones = new List<GameObject>();
 
-    public void ActualizarTextoHUD(string nuevoTexto)
+    public void InicializarHUD(int vidasIniciales)
     {
-        Debug.Log("SE LLAMA: " + nuevoTexto);
-
-        miTexto.text = nuevoTexto;
-    }
-
-    public void ActualizarVidasHUD(int vidas)
-    {
-        Debug.Log("ESTAS ACTUALIZANDO VIDAS.");
-
-        if (ContenedorVacio())
+        //Crear los corazones iniciales en el HUD.
+        for (int i = 0; i < vidasIniciales; i++)
         {
-            CargarContenedor(vidas);
-            return;
-        }
+            GameObject iconoVida = Instantiate(iconoVidaPrefab, contIconosVida);
 
-        if(CantidadIconosVidas() > vidas)
-        {
-            EliminarUltimoIcono();
-        }
-        else
-        {
-            CrearIcono();
+            corazones.Add(iconoVida);
         }
     }
 
-    private bool ContenedorVacio()
+    public void ActualizarHUD(int vidasActuales)
     {
-        return contIconosVida.transform.childCount == 0;
-    }
-
-    private int CantidadIconosVidas()
-    {
-        return contIconosVida.transform.childCount;
-    }
-
-    private void CargarContenedor(int cantidadIconos)
-    {
-        for(int i = 0; i < cantidadIconos; i++)
+        //Ocultar o mostrar los corazones según las vidas actuales.
+        for (int i = 0; i < corazones.Count; i++)
         {
-            CrearIcono();
+            if (i < vidasActuales)
+            {
+                //Mostrar el corazón.
+                corazones[i].SetActive(true);
+            }
+            else
+            {
+                //Ocultar el corazón.
+                corazones[i].SetActive(false);
+            }
         }
-    }
-
-    private void CrearIcono()
-    {
-        Instantiate(iconoVida, contIconosVida.transform);
-    }
-
-    private void EliminarUltimoIcono()
-    {
-        Transform cont = contIconosVida.transform;
-
-        GameObject.Destroy(cont.GetChild(cont.childCount - 1).gameObject);
     }
 }
