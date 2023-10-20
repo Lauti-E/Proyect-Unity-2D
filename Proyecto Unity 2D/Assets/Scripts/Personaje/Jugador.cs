@@ -18,9 +18,6 @@ public class Jugador : MonoBehaviour
     private UnityEvent<int> ModificacionVidas;
 
     [SerializeField]
-    private UnityEvent<string> CambioTexto;
-
-    [SerializeField]
     private int vidasActuales; //Seguimiento de las vidas actuales.
     private int coleccionablesRec = 0; //Contador de coleccionables recolectados.
 
