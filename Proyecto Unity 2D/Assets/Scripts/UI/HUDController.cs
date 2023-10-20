@@ -1,42 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
 {
-    [SerializeField] GameObject iconoVidaPrefab;
-    [SerializeField] Transform contIconosVida;
+    [SerializeField] private Text textoVidas;
+    [SerializeField] private Jugador jugador;
 
-    //Lista de corazones.
-    private List<GameObject> corazones = new List<GameObject>();
-
-    public void InicializarHUD(int vidasIniciales)
+    private void Start()
     {
-        //Crear los corazones iniciales en el HUD.
-        for (int i = 0; i < vidasIniciales; i++)
+        if (jugador == null)
         {
-            GameObject iconoVida = Instantiate(iconoVidaPrefab, contIconosVida);
-
-            corazones.Add(iconoVida);
+            Debug.LogError("El jugador no está asignado en el Inspector.");
         }
     }
 
-    public void ActualizarHUD(int vidasActuales)
+    private void Update()
     {
-        //Ocultar o mostrar los corazones según las vidas actuales.
-        for (int i = 0; i < corazones.Count; i++)
-        {
-            if (i < vidasActuales)
-            {
-                //Mostrar el corazón.
-                corazones[i].SetActive(true);
-            }
-            else
-            {
-                //Ocultar el corazón.
-                corazones[i].SetActive(false);
-            }
-        }
+        textoVidas.text = "Vidas: " + j
     }
 }

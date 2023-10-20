@@ -1,17 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using TMPro;
 
 public class Jugador : MonoBehaviour
 {
 
     [SerializeField]
     private PerfilJugador perfilJugador;
-
-    [SerializeField]
-    private HUDController hudController;
 
     public PerfilJugador PerfilJugador { get => perfilJugador; }
 
@@ -31,9 +25,6 @@ public class Jugador : MonoBehaviour
 
         //Guardar la posición inicial del jugador al inicio del juego.
         posicionInicial = transform.position;
-
-        //Inicializar el HUD con las vidas iniciales.
-        hudController.InicializarHUD(vidasActuales);
     }
 
     public void ModificarVida(int puntos)
@@ -48,9 +39,6 @@ public class Jugador : MonoBehaviour
         else
         {
             Debug.Log("Vidas restantes: " + vidasActuales);
-
-            //Actualizar el HUD después de modificar las vidas.
-            hudController.ActualizarHUD(vidasActuales);
         }
     }
 
@@ -63,9 +51,6 @@ public class Jugador : MonoBehaviour
 
         //Restablecer las vidas actuales a la cantidad inicial.
         vidasActuales = perfilJugador.VidasIniciales;
-
-        //Actualizar el HUD al reiniciar el juego.
-        hudController.ActualizarHUD(vidasActuales);
     }
 
     private bool EstasVivo()
@@ -96,5 +81,10 @@ public class Jugador : MonoBehaviour
                 Debug.Log("GANASTE!");
             }
         }
+    }
+
+    public int VidasActuales
+    {
+        get { return vidasActuales; }
     }
 }

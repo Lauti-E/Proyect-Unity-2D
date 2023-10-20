@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class Curar : MonoBehaviour
 {
-    [Header("Configuracion")]
+    [Header("Configuración")]
     [SerializeField] int puntos = 1;
 
     private void OnParticleCollision(GameObject other)
