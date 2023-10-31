@@ -7027,9 +7027,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386684b3012551a4f92564ecba70ad72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoEntreDisparos: 0
-  proyectilPrefab: {fileID: 0}
-  puntoSpawnProyectil: {fileID: 0}
+  tiempoEntreDisparos: 2
+  proyectilPrefab: {fileID: 7517047505542360114, guid: a12336d361094ff468acf33eb2ce878a, type: 3}
+  puntoSpawnProyectil: {fileID: 421560491}
 --- !u!1 &447286298
 GameObject:
   m_ObjectHideFlags: 0
@@ -36590,7 +36590,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.0648452
+      m_AnimationSpeed: 1.5672374
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: -2, z: 0}
@@ -36599,7 +36599,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.673459
+      m_AnimationSpeed: 1.6550258
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -2, z: 0}
@@ -36626,7 +36626,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.3054032
+      m_AnimationSpeed: 1.414305
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 0, z: 0}
@@ -36635,7 +36635,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.3193088
+      m_AnimationSpeed: 1.7746285
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}

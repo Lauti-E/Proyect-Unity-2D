@@ -11,11 +11,27 @@ public class GeneradorProyectiles : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("DispararProyectil", 0f, tiempoEntreDisparos);
+        //Iniciar el bucle de disparo de proyectiles.
+        StartCoroutine(DispararProyectil());
     }
 
-    private void DispararProyectil()
+    IEnumerator DispararProyectil()
     {
-        Instantiate(proyectilPrefab, puntoSpawnProyectil.position, puntoSpawnProyectil.rotation);
+        while (true)
+        {
+            //Instanciar un proyectil en el punto de spawn.
+            GameObject nuevoProyectil = Instantiate(proyectilPrefab, puntoSpawnProyectil.position, Quaternion.identity);
+
+            //Establecer la velocidad del proyectil usando el script "ConfigProyectil".
+            ConfigProyectil proyectil = nuevoProyectil.GetComponent<ConfigProyectil>();
+
+            if(proyectil != null)
+            {
+                proyectil.velProyectil = 10f;
+            }
+
+            //Esperar el tiempo entre disparos.
+            yield return new WaitForSeconds(tiempoEntreDisparos);
+        }
     }
 }
