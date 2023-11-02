@@ -23,9 +23,9 @@ public class GeneradorProyectiles : MonoBehaviour
             GameObject nuevoProyectil = Instantiate(proyectilPrefab, puntoSpawnProyectil.position, Quaternion.identity);
 
             //Establecer la velocidad del proyectil usando el script "ConfigProyectil".
-            ConfigProyectil proyectil = nuevoProyectil.GetComponent<ConfigProyectil>();
 
-            if(proyectil != null)
+            ConfigProyectil proyectil = nuevoProyectil.GetComponent<ConfigProyectil>();
+            if (proyectil != null)
             {
                 proyectil.velProyectil = 10f;
             }

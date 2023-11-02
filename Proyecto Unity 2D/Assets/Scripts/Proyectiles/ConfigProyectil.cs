@@ -15,7 +15,6 @@ public class ConfigProyectil : MonoBehaviour
         //Asignar velocidad inicial al proyectil.
         rbProyectil.velocity = new Vector2(0, -velProyectil);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Piso"))
