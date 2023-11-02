@@ -42,7 +42,10 @@ public class Jugador : MonoBehaviour
 
         if (vidasActuales <= 0)
         {
-            //El jugador se quedó sin vidas, reiniciar juego.
+            //El jugador se quedó sin vidas, descontar un intento.
+            GameManager.Instance.DescontarIntento();
+
+            //El jugador se quedó sin vidas, volver a la posicion inicial.
             ReiniciarJuego();
         }
         else
