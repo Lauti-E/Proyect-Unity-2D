@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneradorProyectiles : MonoBehaviour
 {
     [SerializeField] float tiempoEntreDisparos;
-    [SerializeField] int poolSize = 3;
+    [SerializeField] int poolSize = 1;
 
     [SerializeField] GameObject proyectilPrefab;
     [SerializeField] Transform puntoSpawnProyectil;

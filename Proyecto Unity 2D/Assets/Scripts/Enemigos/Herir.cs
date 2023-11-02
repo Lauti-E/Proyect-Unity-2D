@@ -20,7 +20,7 @@ public class Herir : MonoBehaviour
 
             if (gameObject.CompareTag("Proyectil"))
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

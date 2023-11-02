@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConfigProyectil : MonoBehaviour
 {
 
-    public float velProyectil = 10f; //Velocidad de los proyectiles.
+    public float velProyectil = 15f; //Velocidad de los proyectiles.
 
     void Start()
     {
@@ -19,10 +19,10 @@ public class ConfigProyectil : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Piso"))
         {
-            //Destruir el proyectil al colisionar con el suelo.
+            //Desactivar el proyectil al colisionar con el suelo.
             if (gameObject.CompareTag("Proyectil"))
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
