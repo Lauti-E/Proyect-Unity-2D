@@ -5,12 +5,24 @@ using UnityEngine;
 public class GeneradorProyectiles : MonoBehaviour
 {
     [SerializeField] float tiempoEntreDisparos;
+    [SerializeField] int poolSize = 3;
 
     [SerializeField] GameObject proyectilPrefab;
     [SerializeField] Transform puntoSpawnProyectil;
 
+    private List<GameObject> proyectilPool = new List<GameObject>();
+
     private void Start()
     {
+        for (int i = 0; i < poolSize; i++) 
+        {
+            GameObject proyectil = Instantiate(proyectilPrefab, puntoSpawnProyectil.position, Quaternion.identity);
+
+            //Desactiva el proyectil en la pool.
+            proyectil.SetActive(false);
+            proyectilPool.Add(proyectil);
+        }
+
         //Iniciar el bucle de disparo de proyectiles.
         StartCoroutine(DispararProyectil());
     }
@@ -19,17 +31,22 @@ public class GeneradorProyectiles : MonoBehaviour
     {
         while (true)
         {
-            //Instanciar un proyectil en el punto de spawn.
-            GameObject nuevoProyectil = Instantiate(proyectilPrefab, puntoSpawnProyectil.position, Quaternion.identity);
+            //Busca un proyectil inactivo en la pool.
+            GameObject proyectil = proyectilPool.Find(p => !p.activeSelf);
 
-            //Establecer la velocidad del proyectil usando el script "ConfigProyectil".
-
-            ConfigProyectil proyectil = nuevoProyectil.GetComponent<ConfigProyectil>();
             if (proyectil != null)
             {
-                proyectil.velProyectil = 10f;
-            }
+                proyectil.transform.position = puntoSpawnProyectil.position;
 
+                ConfigProyectil proyectilConfig = proyectil.GetComponent<ConfigProyectil>();
+
+                if (proyectilConfig != null)
+                {
+                    //Establece la velocidad del proyectil.
+                    proyectilConfig.velProyectil = 10f;
+                }
+                proyectil.SetActive(true);
+            }
             //Esperar el tiempo entre disparos.
             yield return new WaitForSeconds(tiempoEntreDisparos);
         }
