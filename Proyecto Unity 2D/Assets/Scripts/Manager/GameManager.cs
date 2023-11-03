@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private HUDController hudController;
+    [SerializeField]
+    private TextMeshProUGUI textoPausa;
 
     private int intentos; //Intentos que tiene el jugador cada 5 vidas.
 
@@ -46,6 +48,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
 
         Debug.Log("JUEGO PAUSADO.");
+
+        if (textoPausa != null)
+        {
+            textoPausa.text = "PAUSA";
+            textoPausa.gameObject.SetActive(true);
+        }
     }
 
     private void Reanudar()
@@ -53,6 +61,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
 
         Debug.Log("JUEGO REANUDADO.");
+
+        if (textoPausa != null)
+        {
+            textoPausa.gameObject.SetActive(false);
+        }
     }
 
     private void Update()

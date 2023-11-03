@@ -7,6 +7,9 @@ public class HUDController : MonoBehaviour
     TextMeshProUGUI vidas;
 
     [SerializeField]
+    private TextMeshProUGUI textoPausa;
+
+    [SerializeField]
     private string textoVidas = "Vidas: ";
 
     public void ActualizarVidasHUD(string nuevoTexto)
