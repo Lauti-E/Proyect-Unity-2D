@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    private HUDController hudController;
+
     private int intentos; //Intentos que tiene el jugador cada 5 vidas.
-    private int puntosDescIntento = 5; //Puntos de vida para descontar un intento.
 
     public int IntentosRestantes { get => intentos; }
 
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
 
             DontDestroyOnLoad(gameObject);
 
-            intentos = 5;
+            intentos = 3;
         }
         else
         {
@@ -28,16 +29,56 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        GameEvents.EnPausa += Pausar;
+        GameEvents.EnPlay += Reanudar;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.EnPausa -= Pausar;
+        GameEvents.EnPlay -= Reanudar;
+    }
+
+    private void Pausar()
+    {
+        Time.timeScale = 0;
+
+        Debug.Log("JUEGO PAUSADO.");
+    }
+
+    private void Reanudar()
+    {
+        Time.timeScale = 1;
+
+        Debug.Log("JUEGO REANUDADO.");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Time.timeScale != 0)
+            {
+                GameEvents.TriggerPause();
+            }
+            else
+            {
+                GameEvents.TriggerResume();
+            }
+        }
+    }
+
     public void DescontarIntento()
     {
         intentos--;
 
-        SceneManager.LoadScene(0);
-
         if (intentos <= 0)
         {
-            //Agrega 5 intentos.
-            intentos += 5;
+            SceneManager.LoadScene(0);
+
+            intentos = 3;
         }
     }
 }
