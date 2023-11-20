@@ -75,4 +75,22 @@ public class PersistenceManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+
+    public void SaveMusicConfig(bool status)
+    {
+        SetBool("Music", status);
+        Debug.Log("El jugador presionó " + status);
+    }
+
+    public void SaveVolumenConfig(float volume)
+    {
+        SetFloat("MusicVolumen", volume);
+        Debug.Log("Volumen Escogido " + volume);
+    }
+
+    public void SaveUsername(string value)
+    {
+        SetString("Username", value);
+        Debug.Log("El nombre es " + value);
+    }
 }
