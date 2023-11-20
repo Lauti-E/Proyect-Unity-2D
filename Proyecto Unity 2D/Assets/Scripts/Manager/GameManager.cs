@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (textoPausa != null)
         {
             textoPausa.text = "PAUSA";
+
             textoPausa.gameObject.SetActive(true);
         }
     }
@@ -93,5 +94,15 @@ public class GameManager : MonoBehaviour
 
             intentos = 3;
         }
+    }
+
+    public void PausarDesdeExterno()
+    {
+        Pausar();
+    }
+
+    public void ReanudarDesdeExterno()
+    {
+        Reanudar();
     }
 }
