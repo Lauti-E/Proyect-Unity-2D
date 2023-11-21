@@ -7048,8 +7048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffc824244b7c4f4bb595355e5b325ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textoPausa: {fileID: 2076960039}
-  menuConfig: {fileID: 0}
 --- !u!4 &447286299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5220720609012833090, guid: a27945692a071e74da86287403158a86, type: 3}
@@ -33337,7 +33335,6 @@ MonoBehaviour:
   textoPausa: {fileID: 2076960039}
   textoVidas: 'Vidas: '
   menuConfig: {fileID: 1203164623}
-  gameManager: {fileID: 441993417}
 --- !u!1001 &1391718243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37395,7 +37392,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.8959705
+      m_AnimationSpeed: 1.093497
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -5, y: -2, z: 0}
@@ -37404,7 +37401,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.9303793
+      m_AnimationSpeed: 1.7405776
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -2, z: 0}
@@ -37431,7 +37428,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.6874925
+      m_AnimationSpeed: 1.7129312
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 16, y: 0, z: 0}
@@ -37440,7 +37437,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 21300000, guid: acd4b8d9cca63eb45bc59a50e07b1143, type: 3}
       - {fileID: 21300000, guid: df3f2a406daeeca45ae609bccf987c02, type: 3}
-      m_AnimationSpeed: 1.4483168
+      m_AnimationSpeed: 1.7452024
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 0, z: 0}

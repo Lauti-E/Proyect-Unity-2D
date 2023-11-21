@@ -21,10 +21,12 @@ public class Jugador : MonoBehaviour
     private bool enTrampa = false; //Variable de estado para verificar si el jugador colisionó con un pincho.
     private bool haGanado = false; //Variable de estado para verificar si el jugador ganó.
 
+    private const string VidasKey = "Vidas"; //Clave para PlayerPrefs.
+
     private void Start()
     {
-        //Inicializa las vidas actuales.
-        vidasActuales = perfilJugador.VidasIniciales;
+        //Inicializa las vidas actuales desde PlayerPrefs.
+        vidasActuales = PersistenceManager.Instance.GetInt(VidasKey, perfilJugador.VidasIniciales);
 
         //Guardar la posición inicial del jugador al inicio del juego.
         posicionInicial = transform.position;
@@ -39,6 +41,9 @@ public class Jugador : MonoBehaviour
         vidasActuales = Mathf.Max(vidasActuales, 0);
 
         VidasCargadas.Invoke(vidasActuales.ToString());
+
+        //Guardar las vidas actuales en PlayerPrefs.
+        PersistenceManager.Instance.SetInt(VidasKey, vidasActuales);
 
         if (vidasActuales <= 0)
         {
@@ -65,6 +70,9 @@ public class Jugador : MonoBehaviour
         vidasActuales = perfilJugador.VidasIniciales;
 
         VidasCargadas.Invoke(vidasActuales.ToString());
+
+        //Guardar las vidas iniciales en PlayerPrefs.
+        PersistenceManager.Instance.SetInt(VidasKey, perfilJugador.VidasIniciales);
     }
 
     private bool EstasVivo()
